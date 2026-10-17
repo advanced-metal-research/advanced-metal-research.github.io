@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Metal Research on GitHub</title>
+<meta name="description" content="Public repositories and write-ups from Advanced Metal Research, maker of open-source, AI-native industrial robots.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://advanced-metal-research.github.io/">
+<meta property="og:title" content="Advanced Metal Research on GitHub">
+<meta property="og:description" content="Public repositories and write-ups from Advanced Metal Research.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://advanced-metal-research.github.io/">
+<link rel="icon" href="assets/amr-mark.svg" type="image/svg+xml">
+<link rel="alternate" type="application/json" href="repos.json" title="Public repositories (JSON)">
+<script>try{var t=localStorage.getItem("amr-theme");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="brand" href="https://advancedmetalresearch.com/" aria-label="Advanced Metal Research, company site">
+    <svg class="brand-mark" viewBox="0 0 975 370" aria-hidden="true"><use href="#amr-mark"/></svg>
+    <span class="brand-name">Advanced Metal Research<small>On GitHub</small></span>
+  </a>
+  <nav class="nav" aria-label="Sections"><a href="#repos">Repositories</a><a href="#writeups">Write-ups</a><a href="https://github.com/advanced-metal-research">GitHub organization</a></nav>
+  <div class="top-end">
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="tt-moon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><path d="M14.6 11.2A6.1 6.1 0 0 1 6.8 3.4a6.1 6.1 0 1 0 7.8 7.8Z"/></svg>
+      <svg class="tt-sun" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="3.2"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2M3.7 3.7l1.4 1.4M12.9 12.9l1.4 1.4M3.7 14.3l1.4-1.4M12.9 5.1l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero dotgrid" aria-labelledby="hero-title">
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="lbl"><b>GitHub</b> &nbsp; advanced-metal-research</span>
+        <span class="lbl">{{REPO_COUNT}} public {{REPO_WORD}} &nbsp; <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></span>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="seat">
+            <span class="lbl">Hawthorne, California</span>
+            <h1 id="hero-title">Advanced Metal Research on GitHub.</h1>
+            <p class="hero-sub">Open-source, AI-native industrial robots.</p>
+          </div>
+          <p class="hero-lede">Advanced Metal Research makes open-source, AI-native industrial robots, machined and assembled in the USA. Every function unlocked, programmable from the pendant, in code or with any AI, with skills on top, starting with welding.</p>
+          <p class="hero-lede">This page lists our public repositories and the write-ups we publish from GitHub. It rebuilds itself every day.</p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="https://advancedmetalresearch.com/">advancedmetalresearch.com</a>
+            <a class="link" href="#repos">Browse the repositories</a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <div class="hero-art" role="img" aria-label="Line drawing of the Rosie 1400 six-axis industrial robot, isometric front view"></div>
+          <figcaption class="lbl-stack"><span class="lbl"><b>Rosie 1400</b></span><span class="lbl">Six axes · 1,400 mm reach</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="ticket" aria-label="At a glance">
+    <dl class="facts" style="--n:4">
+      <div><dt>Public repositories</dt><dd class="red">{{REPO_COUNT}}</dd></div>
+      <div><dt>Stars</dt><dd>{{STAR_COUNT}}</dd></div>
+      <div><dt>Languages</dt><dd>{{LANG_COUNT}}</dd><p>{{LANG_LIST}}</p></div>
+      <div><dt>Write-ups</dt><dd>{{POST_COUNT}}</dd></div>
+    </dl>
+  </section>
+
+  <section class="ticket" id="repos" aria-labelledby="repos-title">
+    <div class="ticket-head">
+      <span class="lbl"><b>01</b> &nbsp; Repositories</span>
+      <span class="lbl">Updated <time datetime="{{BUILT_ISO}}">{{BUILT_HUMAN}}</time> · {{DATA_SOURCE}}</span>
+    </div>
+    <div class="intro">
+      <h2 id="repos-title">Public repositories.</h2>
+      <p class="sub">Every public repository in the organization, most recently updated first. Descriptions come from each repository; where one is missing, the opening of its README is shown instead.</p>
+    </div>
+    <ol class="repos">{{REPO_CARDS}}
+    </ol>
+    {{ARCHIVE}}
+  </section>
+
+  <section class="ticket" id="writeups" aria-labelledby="writeups-title">
+    <div class="ticket-head">
+      <span class="lbl"><b>02</b> &nbsp; Write-ups</span>
+      <span class="lbl">{{POST_COUNT}} posts on GitHub Pages</span>
+    </div>
+    <div class="intro">
+      <h2 id="writeups-title">Write-ups and lab notes.</h2>
+      <p class="sub">Public pages we host on GitHub Pages: replications of robot-learning papers, run in simulation on our Rosie robots. Titles and summaries are read from each page when this site is built.</p>
+    </div>
+    {{WRITEUPS}}
+  </section>
+</main>
+
+<div class="band">
+  <div class="lbl-stack"><span class="lbl"><b>Advanced Metal Research</b></span><span class="lbl">Hawthorne, California</span></div>
+  <div class="barcode" aria-hidden="true"></div>
+  <a class="btn" href="https://advancedmetalresearch.com/">Company site</a>
+  <a class="btn" href="https://github.com/advanced-metal-research">All on GitHub</a>
+</div>
+
+<footer class="foot">
+  <span>Advanced Metal Research</span>
+  <span>advanced-metal-research.github.io</span>
+  <span>Built <time datetime="{{BUILT_ISO}}">{{BUILT_HUMAN}}</time></span>
+  <span><a href="repos.json">repos.json</a></span>
+  <span><a href="https://github.com/advanced-metal-research/advanced-metal-research.github.io">Source for this page</a></span>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="amr-mark" viewBox="0 0 975 370">
+    <path d="M459.958 337.987L255.11 0H131.807L112.273 30.0028L319.11 370H439.116L459.958 337.987Z"/><path d="M660.958 337.987L456.11 0H332.807L313.273 30.0028L520.11 370H640.116L660.958 337.987Z"/><path d="M860.958 337.987L656.11 0H532.807L513.273 30.0028L720.11 370H840.116L860.958 337.987Z"/><path d="M135.359 132L279.109 370H19.1094L0 337.93L135.359 132Z"/><path d="M838.859 238L695.109 6.11097e-06L955.109 1.35821e-05L974.288 31.9951L838.859 238Z"/>
+  </symbol>
+</defs></svg>
+<script>
+(() => {
+  const btn = document.querySelector(".theme-toggle");
+  const KEY = "amr-theme", root = document.documentElement;
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  const stored = () => { try { const t = localStorage.getItem(KEY); return t === "dark" || t === "light" ? t : null; } catch (e) { return null; } };
+  const current = () => root.dataset.theme || stored() || (mq.matches ? "dark" : "light");
+  const sync = () => { const d = current() === "dark"; btn.setAttribute("aria-pressed", d ? "true" : "false"); btn.setAttribute("aria-label", d ? "Switch to light mode" : "Switch to dark mode"); };
+  btn.addEventListener("click", () => {
+    const n = current() === "dark" ? "light" : "dark";
+    root.classList.add("theme-anim");
+    root.dataset.theme = n;
+    try { localStorage.setItem(KEY, n); } catch (e) {}
+    sync();
+    setTimeout(() => root.classList.remove("theme-anim"), 250);
+  });
+  mq.addEventListener("change", sync);
+  sync();
+})();
+</script>
+</body>
+</html>

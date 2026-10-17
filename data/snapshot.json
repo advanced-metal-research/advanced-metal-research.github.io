@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-10-17T05:50:34Z",
+  "org": "advanced-metal-research",
+  "repos": [
+    {
+      "name": "GradientOS",
+      "url": "https://github.com/advanced-metal-research/GradientOS",
+      "visibility": "public",
+      "description": "GradientOS is a robot control and offline programming stack for Gradient Robotics arms. It combines a realtime controller, an HTTP/SSE API, and a web operator interface for trajectory and weld workflows.",
+      "description_source": "readme",
+      "language": "Python",
+      "topics": [],
+      "stars": 23,
+      "forks": 8,
+      "license": "MIT",
+      "homepage": null,
+      "pages_url": null,
+      "archived": false,
+      "fork": false,
+      "pushed_at": "2026-08-08T02:27:15Z",
+      "created_at": "2025-06-22T06:30:11Z"
+    },
+    {
+      "name": "rosie-sim-kits",
+      "url": "https://github.com/advanced-metal-research/rosie-sim-kits",
+      "visibility": "public",
+      "description": "Rosie robot URDF, MuJoCo, STEP, GLB and robot.json (mirror of advancedmetalresearch.com)",
+      "description_source": "description",
+      "language": "Python",
+      "topics": [
+        "gltf",
+        "industrial-robot",
+        "mujoco",
+        "robot-simulation",
+        "robotics",
+        "step",
+        "urdf"
+      ],
+      "stars": 1,
+      "forks": 0,
+      "license": null,
+      "homepage": "https://advancedmetalresearch.com/agents.md",
+      "pages_url": null,
+      "archived": false,
+      "fork": false,
+      "pushed_at": "2026-10-10T00:48:52Z",
+      "created_at": "2026-10-10T00:46:02Z"
+    },
+    {
+      "name": "advanced-metal-research.github.io",
+      "url": "https://github.com/advanced-metal-research/advanced-metal-research.github.io",
+      "visibility": "public",
+      "description": "Advanced Metal Research on GitHub",
+      "description_source": "description",
+      "language": null,
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "license": null,
+      "homepage": "https://advanced-metal-research.github.io/",
+      "pages_url": null,
+      "archived": false,
+      "fork": false,
+      "pushed_at": "2026-10-17T05:46:28Z",
+      "created_at": "2026-10-17T05:46:26Z"
+    }
+  ],
+  "writeups": [
+    {
+      "url": "https://advanced-metal-research.github.io/robot-policy-testing/",
+      "label": "Lab notes",
+      "title": "Robot policy testing \u00b7 AMR lab notes",
+      "description": "Advanced Metal Research lab notes: replications of robot-learning papers, run in simulation on our Rosie robots.",
+      "image": null,
+      "posts": [
+        {
+          "url": "https://advanced-metal-research.github.io/robot-policy-testing/alpha-nist/",
+          "date": "2026-10-17",
+          "paper": "AlphaNIST \u00b7 arXiv:2610.13354",
+          "title": "Replicating AlphaNIST, then moving it onto our Rosie arms \u00b7 AMR lab notes",
+          "description": "A lab note on re-implementing AlphaNIST (one RL policy, binary task reward, reset bank, beta sampling) on a CPU-sized NIST board, then on Rosie 600/1000/1400 arms with the SendCutSend compact gripper.",
+          "image": "https://advanced-metal-research.github.io/robot-policy-testing/alpha-nist/assets/hero.jpg"
+        },
+        {
+          "url": "https://advanced-metal-research.github.io/robot-policy-testing/sgs-rl/",
+          "date": "2026-10-17",
+          "paper": "Success Guided Sampling \u00b7 CoRL 2026",
+          "title": "Feeding the frontier: replicating Success Guided Sampling on a welding robot",
+          "description": "We reimplemented Success Guided Sampling (CoRL 2026) from scratch and tested it on two AMR Rosie welding cells, from a laptop CPU to 262,144 parallel environments on cloud GPUs.",
+          "image": "https://advanced-metal-research.github.io/robot-policy-testing/sgs-rl/assets/film/hero.jpg"
+        }
+      ]
+    }
+  ]
+}

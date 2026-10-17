@@ -1,0 +1,21 @@
+{
+  "_about": "Public GitHub Pages write-ups hosted from this org. Only URLs and labels live here: build.py fetches each page's title, description and og:image at build time. The repositories behind these sites may be private; never add a repo name, description or link to one here.",
+  "sites": [
+    {
+      "url": "https://advanced-metal-research.github.io/robot-policy-testing/",
+      "label": "Lab notes",
+      "posts": [
+        {
+          "url": "https://advanced-metal-research.github.io/robot-policy-testing/alpha-nist/",
+          "date": "2026-10-17",
+          "paper": "AlphaNIST · arXiv:2610.13354"
+        },
+        {
+          "url": "https://advanced-metal-research.github.io/robot-policy-testing/sgs-rl/",
+          "date": "2026-10-17",
+          "paper": "Success Guided Sampling · CoRL 2026"
+        }
+      ]
+    }
+  ]
+}
