@@ -205,26 +205,23 @@ def page_meta(url: str) -> dict:
     p = _Meta()
     p.feed(body)
     image = p.meta.get("og:image")
+    # og:title is the bare post title; <title> may carry a site suffix.
     return {
-        "title": re.sub(r"\s+", " ", p.title).strip() or p.meta.get("og:title"),
+        "title": p.meta.get("og:title") or re.sub(r"\s+", " ", p.title).strip(),
         "description": p.meta.get("description") or p.meta.get("og:description"),
         "image": urllib.parse.urljoin(url, image) if image else None,
     }
 
 
 def resolve_writeups(config: dict, previous: list[dict], offline: bool) -> list[dict]:
-    """Fill each configured page with its live title/description/image."""
-    prev = {}
-    for site in previous:
-        prev[site["url"]] = site
-        for post in site.get("posts", []):
-            prev[post["url"]] = post
+    """Fill each configured post with its live title/description/image."""
+    prev = {p["url"]: p for p in previous if "url" in p}
 
     def resolve(entry: dict) -> dict:
         url = entry["url"]
         if not url.startswith(SITE_URL):
             raise SystemExit(f"writeups.json: {url} is not hosted under {SITE_URL}")
-        out = {k: v for k, v in entry.items() if k != "posts"}
+        out = dict(entry)
         live = {}
         if not offline:
             try:
@@ -237,12 +234,7 @@ def resolve_writeups(config: dict, previous: list[dict], offline: bool) -> list[
             out["title"] = url
         return out
 
-    sites = []
-    for site in config.get("sites", []):
-        resolved = resolve(site)
-        resolved["posts"] = [resolve(p) for p in site.get("posts", [])]
-        sites.append(resolved)
-    return sites
+    return [resolve(p) for p in config.get("posts", [])]
 
 
 # ---------------------------------------------------------------- rendering
@@ -309,60 +301,37 @@ def repo_card(r: dict, idx: int) -> str:
       </li>"""
 
 
-def writeups_html(sites: list[dict]) -> str:
-    if not sites:
+def writeups_html(posts: list[dict]) -> str:
+    if not posts:
         return '<p class="muted">No write-ups yet.</p>'
-    out = []
-    for site in sites:
-        posts = []
-        # " · AMR lab notes" style suffix shared with the site title is noise in the list.
-        suffix = " · " + site["title"].split(" · ", 1)[1] if " · " in site["title"] else None
-        n = len(site["posts"])
-        for k, p in enumerate(site["posts"]):
-            i = n - k  # posts are listed newest first and numbered oldest = 01
-            title = p["title"]
-            if suffix and title.endswith(suffix):
-                title = title[: -len(suffix)]
-            thumb = ""
-            if p.get("image"):
-                thumb = (
-                    f'<a class="thumb" href="{e(p["url"])}" tabindex="-1" aria-hidden="true">'
-                    f'<img src="{e(p["image"])}" alt="" loading="lazy" decoding="async"></a>'
-                )
-            meta = [f'<span class="lbl"><b>No. {i:02d}</b></span>']
-            if p.get("date"):
-                meta.append(f'<span class="lbl"><time datetime="{e(p["date"])}">{fmt_date(p["date"])}</time></span>')
-            if p.get("paper"):
-                meta.append(f'<span class="lbl">{e(p["paper"])}</span>')
-            desc = f"<p>{e(p['description'])}</p>" if p.get("description") else ""
-            posts.append(
-                f"""
-          <li class="{'has-thumb' if thumb else ''}">
-            {thumb}
-            <div>
-              <div class="meta">{''.join(meta)}</div>
-              <h3><a href="{e(p['url'])}">{e(title)}</a></h3>
-              {desc}
-            </div>
-          </li>"""
+    items = []
+    n = len(posts)
+    for k, p in enumerate(posts):
+        i = n - k  # posts are listed newest first and numbered oldest = 01
+        thumb = ""
+        if p.get("image"):
+            thumb = (
+                f'<a class="thumb" href="{e(p["url"])}" tabindex="-1" aria-hidden="true">'
+                f'<img src="{e(p["image"])}" alt="" loading="lazy" decoding="async"></a>'
             )
-        site_desc = f'<p class="sub">{e(site["description"])}</p>' if site.get("description") else ""
-        out.append(
+        meta = [f'<span class="lbl"><b>No. {i:02d}</b></span>']
+        if p.get("date"):
+            meta.append(f'<span class="lbl"><time datetime="{e(p["date"])}">{fmt_date(p["date"])}</time></span>')
+        if p.get("paper"):
+            meta.append(f'<span class="lbl">{e(p["paper"])}</span>')
+        desc = f"<p>{e(p['description'])}</p>" if p.get("description") else ""
+        items.append(
             f"""
-      <article class="wsite">
-        <div class="wsite-head">
-          <div>
-            <span class="lbl"><b>{e(site.get('label') or 'Write-ups')}</b> &nbsp; {len(site['posts'])} posts</span>
-            <h3><a href="{e(site['url'])}">{e(site['title'])}</a></h3>
-            {site_desc}
-          </div>
-          <a class="btn" href="{e(site['url'])}">Open<span class="sr"> {e(site['title'])}</span></a>
+      <li class="{'has-thumb' if thumb else ''}">
+        {thumb}
+        <div>
+          <div class="meta">{''.join(meta)}</div>
+          <h3><a href="{e(p['url'])}">{e(p['title'])}</a></h3>
+          {desc}
         </div>
-        <ol class="posts">{''.join(posts)}
-        </ol>
-      </article>"""
+      </li>"""
         )
-    return "".join(out)
+    return f'\n    <ol class="posts">{"".join(items)}\n    </ol>'
 
 
 def archive_html(repos: list[dict]) -> str:
@@ -395,7 +364,7 @@ def render(data: dict, out_dir: Path) -> None:
     other.sort(key=lambda r: r["name"].lower())
 
     langs = sorted({r["language"] for r in active if r["language"]})
-    n_posts = sum(len(s["posts"]) for s in data["writeups"])
+    n_posts = len(data["writeups"])
     built = dt.datetime.fromisoformat(data["generated_at"].replace("Z", "+00:00"))
     values = {
         "REPO_COUNT": str(len(active)),
@@ -404,7 +373,6 @@ def render(data: dict, out_dir: Path) -> None:
         "LANG_COUNT": str(len(langs)),
         "LANG_LIST": e(", ".join(langs) or "None"),
         "POST_COUNT": str(n_posts),
-        "SITE_COUNT": str(len(data["writeups"])),
         "BUILT_ISO": built.strftime("%Y-%m-%dT%H:%MZ"),
         "BUILT_HUMAN": f"{built.day} {built:%b %Y}, {built:%H:%M} UTC",
         "DATA_SOURCE": "GitHub API" if data.get("source") == "live" else "saved snapshot",
@@ -462,7 +430,7 @@ def main() -> None:
     }
     render(data, Path(args.out))
     log(f"wrote {args.out}/index.html ({source}: {len(repos)} repos, "
-        f"{sum(len(s['posts']) for s in data['writeups'])} write-ups)")
+        f"{len(data['writeups'])} write-ups)")
 
     if args.update_snapshot:
         if source != "live":

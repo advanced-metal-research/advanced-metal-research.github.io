@@ -34,9 +34,10 @@ python3 -m http.server -d _site 8000
 
 ## Adding a write-up
 
-Add the page URL (under `https://advanced-metal-research.github.io/`) to a site's `posts`
-in `writeups.json`, newest first, with an optional `date` and `paper` label. Then run
-`--update-snapshot` and commit.
+Add the post URL (under `https://advanced-metal-research.github.io/`) to `posts` in
+`writeups.json`, newest first, with an optional `date` and `paper` label. Then run
+`--update-snapshot` and commit. Posts link back to this page; there is no separate index
+page per repository.
 
 Design: tokens and components from the AMR website (Saira from Google Fonts, ice and ink
 palette, brand red #b8020d, light and dark themes sharing the `amr-theme` preference).

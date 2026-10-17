@@ -233,14 +233,7 @@ strong, b { font-weight: 600; }
 @media (max-width: 760px) { .rows > li { grid-template-columns: 1fr; gap: .25rem; } }
 
 /* write-ups */
-.wsite { border-top: 2px solid var(--ink); }
-.wsite + .wsite { margin-top: 2.5rem; }
-.wsite-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem 2rem; flex-wrap: wrap; padding: 1rem 0 1.25rem; border-bottom: 1px solid var(--line-2); }
-.wsite-head h3 { font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: -.025em; margin-top: .35rem; }
-.wsite-head h3 a { text-decoration: none; }
-.wsite-head h3 a:hover { color: var(--red); }
-.wsite-head .sub { color: var(--ink-2); margin-top: .4rem; }
-.posts { list-style: none; padding: 0; margin: 0; }
+.posts { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
 .posts > li { display: grid; grid-template-columns: 1fr; gap: clamp(1.25rem, 3vw, 2.5rem); padding: clamp(1.25rem, 2.5vw, 2rem) 0; border-bottom: 1px solid var(--line-2); align-items: start; }
 .posts > li.has-thumb { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
 .posts .thumb img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 3px; border: 1px solid var(--line); background: var(--fig-bg); }

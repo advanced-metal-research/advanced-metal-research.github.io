@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T05:50:34Z",
+  "generated_at": "2026-10-17T06:11:40Z",
   "org": "advanced-metal-research",
   "repos": [
     {
@@ -52,44 +52,35 @@
       "visibility": "public",
       "description": "Advanced Metal Research on GitHub",
       "description_source": "description",
-      "language": null,
+      "language": "Python",
       "topics": [],
       "stars": 0,
       "forks": 0,
       "license": null,
       "homepage": "https://advanced-metal-research.github.io/",
-      "pages_url": null,
+      "pages_url": "https://advanced-metal-research.github.io/",
       "archived": false,
       "fork": false,
-      "pushed_at": "2026-10-17T05:46:28Z",
+      "pushed_at": "2026-10-17T05:53:20Z",
       "created_at": "2026-10-17T05:46:26Z"
     }
   ],
   "writeups": [
     {
-      "url": "https://advanced-metal-research.github.io/robot-policy-testing/",
-      "label": "Lab notes",
-      "title": "Robot policy testing \u00b7 AMR lab notes",
-      "description": "Advanced Metal Research lab notes: replications of robot-learning papers, run in simulation on our Rosie robots.",
-      "image": null,
-      "posts": [
-        {
-          "url": "https://advanced-metal-research.github.io/robot-policy-testing/alpha-nist/",
-          "date": "2026-10-17",
-          "paper": "AlphaNIST \u00b7 arXiv:2610.13354",
-          "title": "Replicating AlphaNIST, then moving it onto our Rosie arms \u00b7 AMR lab notes",
-          "description": "A lab note on re-implementing AlphaNIST (one RL policy, binary task reward, reset bank, beta sampling) on a CPU-sized NIST board, then on Rosie 600/1000/1400 arms with the SendCutSend compact gripper.",
-          "image": "https://advanced-metal-research.github.io/robot-policy-testing/alpha-nist/assets/hero.jpg"
-        },
-        {
-          "url": "https://advanced-metal-research.github.io/robot-policy-testing/sgs-rl/",
-          "date": "2026-10-17",
-          "paper": "Success Guided Sampling \u00b7 CoRL 2026",
-          "title": "Feeding the frontier: replicating Success Guided Sampling on a welding robot",
-          "description": "We reimplemented Success Guided Sampling (CoRL 2026) from scratch and tested it on two AMR Rosie welding cells, from a laptop CPU to 262,144 parallel environments on cloud GPUs.",
-          "image": "https://advanced-metal-research.github.io/robot-policy-testing/sgs-rl/assets/film/hero.jpg"
-        }
-      ]
+      "url": "https://advanced-metal-research.github.io/robot-policy-testing/alpha-nist/",
+      "date": "2026-10-17",
+      "paper": "AlphaNIST \u00b7 arXiv:2610.13354",
+      "title": "Replicating AlphaNIST, then moving it onto our Rosie arms",
+      "description": "A lab note on re-implementing AlphaNIST (one RL policy, binary task reward, reset bank, beta sampling) on a CPU-sized NIST board, then on Rosie 600/1000/1400 arms with the SendCutSend compact gripper.",
+      "image": "https://advanced-metal-research.github.io/robot-policy-testing/alpha-nist/assets/hero.jpg"
+    },
+    {
+      "url": "https://advanced-metal-research.github.io/robot-policy-testing/sgs-rl/",
+      "date": "2026-10-17",
+      "paper": "Success Guided Sampling \u00b7 CoRL 2026",
+      "title": "Feeding the frontier: replicating Success Guided Sampling on a welding robot",
+      "description": "We reimplemented Success Guided Sampling (CoRL 2026) from scratch and tested it on two AMR Rosie welding cells, from a laptop CPU to 262,144 parallel environments on cloud GPUs.",
+      "image": "https://advanced-metal-research.github.io/robot-policy-testing/sgs-rl/assets/film/hero.jpg"
     }
   ]
 }
