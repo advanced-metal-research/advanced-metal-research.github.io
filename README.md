@@ -16,6 +16,11 @@ It lists every public repository in the org and the write-ups we publish on GitH
   name or details in this file.
 - `data/snapshot.json` is a committed copy of the last live data. If the API or a write-up
   page can't be reached, the build falls back to it, so a deploy never fails for lack of data.
+- The hero drawing is the Rosie 1400 motion demonstration from the Rosie page of
+  advancedmetalresearch.com: `assets/js/rosie-plot.js` pen-plots `assets/model/rosie-1400-iso.svg`
+  (viewBox cropped to the drawing), then `rosie-moves.js` hands over to the live hidden-line arm drawn by
+  `rosie-hlr.js` (WebGL2, colour from `--ink`). The `rosie-1400-iso-{ink,white}.webp` still shows without JS,
+  under reduced motion, and when the SVG takes over 2.5 s to arrive.
 - `.github/workflows/pages.yml` builds and deploys on every push to `main`, on manual
   dispatch and daily at 06:23 UTC.
 

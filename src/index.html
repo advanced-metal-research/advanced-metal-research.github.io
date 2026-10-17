@@ -56,10 +56,11 @@
             <a class="link" href="#repos">Browse the repositories</a>
           </div>
         </div>
-        <figure class="hero-figure">
-          <div class="hero-art" role="img" aria-label="Line drawing of the Rosie 1400 six-axis industrial robot, isometric front view"></div>
-          <figcaption class="lbl-stack"><span class="lbl"><b>Rosie 1400</b></span><span class="lbl">Six axes · 1,400 mm reach</span></figcaption>
+        <figure class="hero-figure rm" data-rosie-moves data-model="1400">
+          <div class="hero-art plot-frame" data-plot-src="assets/model/rosie-1400-iso.svg" role="img" aria-label="Isometric line drawing of the Rosie 1400 six-axis robot from the front right, running a motion demonstration: straight-line moves, a circle, a tool reorientation about a fixed point and joint moves"></div>
+          <figcaption class="lbl-stack"><span class="lbl"><b>Rosie 1400</b> &nbsp; Six axes</span><span class="lbl">Motion demonstration</span></figcaption>
         </figure>
+        <script src="assets/js/rosie-plot.js"></script>
       </div>
     </div>
   </section>
@@ -140,5 +141,7 @@
   sync();
 })();
 </script>
+<script src="assets/js/rosie-hlr.js" defer></script>
+<script src="assets/js/rosie-moves.js" defer></script>
 </body>
 </html>

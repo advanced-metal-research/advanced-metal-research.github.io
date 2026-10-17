@@ -158,14 +158,32 @@ strong, b { font-weight: 600; }
 .hero-lede { font-size: 1.1rem; color: var(--ink-2); max-width: 34rem; text-wrap: pretty; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; margin-top: .5rem; }
 .hero-figure { position: relative; margin: 0; }
-.hero-art {
-  width: 100%; aspect-ratio: 1000 / 962;
+/* hero drawing: the webp still (::before) shows without JS and under reduced motion; rosie-plot.js pen-plots the
+   SVG over it, then rosie-moves.js cross-fades to the live hidden-line arm (canvas, colour from --ink) */
+.hero-art { position: relative; display: block; width: 100%; aspect-ratio: 1000 / 962; }
+.hero-art::before {
+  content: ""; position: absolute; inset: 0;
   background: url("assets/rosie-1400-iso-ink.webp") no-repeat center / contain;
 }
-:root[data-theme="dark"] .hero-art { background-image: url("assets/rosie-1400-iso-white.webp"); opacity: .85; }
+:root[data-theme="dark"] .hero-art::before { background-image: url("assets/rosie-1400-iso-white.webp"); opacity: .85; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .hero-art { background-image: url("assets/rosie-1400-iso-white.webp"); opacity: .85; }
+  :root:not([data-theme="light"]) .hero-art::before { background-image: url("assets/rosie-1400-iso-white.webp"); opacity: .85; }
 }
+.hero-art.is-plot::before, .hero-art[data-plot="done"]::before, .hero-art.is-live::before { visibility: hidden; }
+.plot-frame > .rosie-plot {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  overflow: visible; pointer-events: none; color: var(--ink); transition: opacity .3s linear;
+}
+.rosie-plot > g { stroke: currentColor; stroke-width: var(--plot-sw, 1.6); }
+.rosie-plot path.fine { stroke-width: var(--plot-sw-fine, 1.1); }
+.plot-frame > .rm-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+  color: var(--ink); pointer-events: none; opacity: 0; transition: opacity .3s linear;
+}
+.plot-frame.is-live > .rm-canvas.is-cur { opacity: 1; }
+.plot-frame.is-live > .rosie-plot { opacity: 0; }
+.rm .rm-hud { position: absolute; right: 0; bottom: 0; pointer-events: none; opacity: 0; transition: opacity .6s ease .4s; }
+.rm.is-live .rm-hud { opacity: 1; }
 .hero-figure .lbl-stack { position: absolute; left: 0; bottom: 0; display: grid; gap: .3rem; background: var(--ice); padding: .5rem .65rem; border-left: 3px solid var(--red); }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
